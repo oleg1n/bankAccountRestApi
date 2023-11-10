@@ -1,5 +1,6 @@
 package com.aston.kupriyanov.bankAccountRestApi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,7 +35,7 @@ public class Account {
     @CreatedDate
     @Column(name = "create_date")
     private LocalDateTime createDate;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "source_account_id")
     private List<Transaction> transactions;
 

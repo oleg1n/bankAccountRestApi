@@ -1,6 +1,9 @@
 package com.aston.kupriyanov.bankAccountRestApi.service;
 
-import com.aston.kupriyanov.bankAccountRestApi.dto.AccountsResponse;
+import com.aston.kupriyanov.bankAccountRestApi.dto.request.CreateAccountRequest;
+import com.aston.kupriyanov.bankAccountRestApi.dto.response.AccountsAndBalanceResponse;
+import com.aston.kupriyanov.bankAccountRestApi.dto.response.CreateAccountResponse;
+import com.aston.kupriyanov.bankAccountRestApi.dto.response.TransactionsResponse;
 import com.aston.kupriyanov.bankAccountRestApi.entity.Account;
 import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
 import com.aston.kupriyanov.bankAccountRestApi.repo.AccountRepo;
@@ -11,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -25,23 +27,34 @@ public class MainFlowService {
     private final BeneficiaryRepo beneficiaryRepo;
     private final AccountRepo accountRepo;
 
-    public Account createAccount(String name, String pincode){
-        Beneficiary beneficiary = new Beneficiary(name);
-        Account account = new Account(pincode);
+    public CreateAccountResponse createAccount(CreateAccountRequest request){
+        Beneficiary beneficiary = new Beneficiary(request.getName());
+        Account account = new Account(request.getPincode());
         beneficiary.addAccount(account);
 
         beneficiaryRepo.save(beneficiary);
 
-        return account;
+        return CreateAccountResponse.builder().beneficiaryId(beneficiary.getId().toString()).beneficiaryName(beneficiary.getName())
+                .accountId(account.getId().toString()).accountNumber(account.getNumber()).accountBalance(String.valueOf(account.getBalance()))
+                .accountPincode(account.getPincode()).createDate(account.getCreateDate().toString()).build();
     }
-    public AccountsResponse getAllAccountsAndBalance(String name){
+    public AccountsAndBalanceResponse getAllAccountsAndBalance(String name){
         Beneficiary beneficiary = beneficiaryRepo.getBeneficiaryByName(name);
-        AccountsResponse accountsResponse = new AccountsResponse();
+        AccountsAndBalanceResponse accountsAndBalanceResponse = new AccountsAndBalanceResponse();
 
-        accountsResponse.setBeneficiaryName(beneficiary.getName());
+        accountsAndBalanceResponse.setBeneficiaryName(beneficiary.getName());
         Map<String, Long> accountsAndBalance = beneficiary.getAccounts().stream().collect(Collectors.toMap(Account::getNumber, Account::getBalance));
-        accountsResponse.setAccountsAndBalance(accountsAndBalance);
+        accountsAndBalanceResponse.setAccountsAndBalance(accountsAndBalance);
 
-        return accountsResponse;
+        return accountsAndBalanceResponse;
+    }
+
+    public TransactionsResponse getAllTransactions(String accountNumber){
+        Account account = accountRepo.getAccountByNumber(accountNumber);
+
+        TransactionsResponse transactionsResponse = new TransactionsResponse();
+        transactionsResponse.setTransactions(account.getTransactions());
+
+        return transactionsResponse;
     }
 }

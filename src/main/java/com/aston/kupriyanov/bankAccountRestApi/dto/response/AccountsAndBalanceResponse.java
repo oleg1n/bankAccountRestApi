@@ -1,4 +1,4 @@
-package com.aston.kupriyanov.bankAccountRestApi.dto;
+package com.aston.kupriyanov.bankAccountRestApi.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class AccountsResponse {
+public class AccountsAndBalanceResponse {
     @JsonProperty("beneficiary_name")
     private String beneficiaryName;
     @JsonProperty("account_and_balance")
