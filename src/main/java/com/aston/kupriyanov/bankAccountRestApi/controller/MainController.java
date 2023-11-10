@@ -4,6 +4,7 @@ import com.aston.kupriyanov.bankAccountRestApi.dto.request.CreateAccountRequest;
 import com.aston.kupriyanov.bankAccountRestApi.dto.response.AccountsAndBalanceResponse;
 import com.aston.kupriyanov.bankAccountRestApi.dto.response.CreateAccountResponse;
 import com.aston.kupriyanov.bankAccountRestApi.dto.response.TransactionsResponse;
+import com.aston.kupriyanov.bankAccountRestApi.exception.BeneficiaryNotFoundException;
 import com.aston.kupriyanov.bankAccountRestApi.service.MainFlowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
