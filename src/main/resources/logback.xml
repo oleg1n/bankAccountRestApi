@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOG_FILE_MAX_SIZE" value="50MB" />
+    <property name="LOG_FILE_MAX_HISTORY" value="45" />
+
+
+    <property name="LOG_PATH" value="./log/"/>
+    <property name="LOGSTASH_PATH" value="${LOG_PATH}/logstash" />
+
+    <property name="LOG_FILE_NAME" value="bankAccountRestApi.log"/>
+    <property name="LOG_ERROR_FILE_NAME" value="error.log"/>
+    <property name="LOGSTASH_FILE_NAME" value="${LOG_FILE_NAME}.logstash" />
+
+    <property name="LOG_FILE" value="${LOG_PATH}/${LOG_FILE_NAME}}"/>
+    <property name="LOG_ERROR_FILE" value="${LOG_PATH}/${LOG_ERROR_FILE_NAME}}"/>
+    <property name="LOGSTASH_FILE" value="${LOGSTASH_PATH}/${LOG_FILE_NAME}.logstash" />
+
+
+    <property name="ROLLING_FILE_NAME_PATTERN" value="${LOG_PATH}/archived/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.%i.gz"/>
+    <property name="ROLLING_ERROR_PATTERN" value="${LOG_PATH}/archived/${LOG_ERROR_FILE_NAME}.%d{yyyy-MM-dd}.%i.gz"/>
+
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG_ERROR_FILE}</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <cleanHistoryOnStart>${LOG_FILE_CLEAN_HISTORY_ON_START:-false}</cleanHistoryOnStart>
+            <fileNamePattern>${ROLLING_ERROR_PATTERN}</fileNamePattern>
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-7}</maxHistory>
+            <totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP:-0}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.aston.kupriyanov.bankAccountRestApi.service" level="DEBUG" />
+
+    <root level="INFO">
+        <!-- <appender-ref ref="LOGSTASH" /> -->
+        <appender-ref ref="FILE" />
+        <appender-ref ref="ERROR" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
