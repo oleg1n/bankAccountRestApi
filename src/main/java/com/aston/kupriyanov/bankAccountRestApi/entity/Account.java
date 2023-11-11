@@ -35,8 +35,7 @@ public class Account {
     @CreatedDate
     @Column(name = "create_date")
     private LocalDateTime createDate;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "source_account_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sourceAccount", fetch = FetchType.EAGER)
     private List<Transaction> transactions;
 
     public Account() {
@@ -51,6 +50,7 @@ public class Account {
             transactions = new ArrayList<>();
         }
         transactions.add(transaction);
+        transaction.setSourceAccount(this);
     }
 
     public String generateNumber() {

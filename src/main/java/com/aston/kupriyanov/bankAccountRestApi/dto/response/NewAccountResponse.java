@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CreateAccountResponse {
+public class NewAccountResponse {
     @JsonProperty("beneficiary_id")
     private String beneficiaryId;
     @JsonProperty("beneficiary_name")

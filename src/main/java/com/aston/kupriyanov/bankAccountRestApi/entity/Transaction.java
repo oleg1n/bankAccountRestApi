@@ -22,8 +22,9 @@ public class Transaction {
     private UUID id;
     @Column(name = "operation")
     private String operation;
-    @Column(name = "source_account_id")
-    private UUID sourceAccount;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "source_account_id")
+    private Account sourceAccount;
     @Column(name = "destination_account_id")
     private UUID destinationAccount;
     @Column(name = "value")
@@ -31,4 +32,10 @@ public class Transaction {
     @CreatedDate
     @Column(name = "date")
     private LocalDateTime date;
+
+    public Transaction(String operation, UUID destinationAccount, long value){
+        this.operation = operation;
+        this.destinationAccount = destinationAccount;
+        this.value = value;
+    }
 }

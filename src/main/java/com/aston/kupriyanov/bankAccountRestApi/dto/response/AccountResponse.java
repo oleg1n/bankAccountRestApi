@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class AccountsAndBalanceResponse {
+public class AccountResponse {
     @JsonProperty("beneficiary_name")
     private String beneficiaryName;
     @JsonProperty("account_and_balance")
