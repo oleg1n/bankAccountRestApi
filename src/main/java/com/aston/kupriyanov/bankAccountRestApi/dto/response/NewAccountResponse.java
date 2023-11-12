@@ -16,9 +16,9 @@ public class NewAccountResponse {
     @JsonProperty("account_number")
     private String accountNumber;
     @JsonProperty("account_balance")
-    private String accountBalance;
+    private long accountBalance;
     @JsonProperty("account_pincode")
-    private String accountPincode;
+    private String pinCode;
     @JsonProperty("create_date")
     private String createDate;
 }

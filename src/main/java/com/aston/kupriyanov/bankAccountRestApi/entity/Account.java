@@ -28,8 +28,6 @@ public class Account {
     private Beneficiary owner;
     @Column(name = "number")
     private String number;
-    @Column(name = "pincode")
-    private String pincode;
     @Column(name = "balance")
     private long balance;
     @CreatedDate
@@ -39,9 +37,6 @@ public class Account {
     private List<Transaction> transactions;
 
     public Account() {
-    }
-    public Account(String pincode) {
-        this.pincode = pincode;
         this.number = generateNumber();
     }
 
@@ -53,7 +48,7 @@ public class Account {
         transaction.setSourceAccount(this);
     }
 
-    public String generateNumber() {
+    private String generateNumber() {
         String number = "";
         Random value = new Random();
 

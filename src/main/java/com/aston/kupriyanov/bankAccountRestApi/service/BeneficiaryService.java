@@ -2,6 +2,7 @@ package com.aston.kupriyanov.bankAccountRestApi.service;
 
 import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
 import com.aston.kupriyanov.bankAccountRestApi.exception.BeneficiaryNotFoundException;
+import com.aston.kupriyanov.bankAccountRestApi.exception.PincodeIsNotValidException;
 import com.aston.kupriyanov.bankAccountRestApi.repo.BeneficiaryRepo;
 import com.aston.kupriyanov.bankAccountRestApi.util.LogHelper;
 import lombok.RequiredArgsConstructor;
@@ -18,17 +19,19 @@ public class BeneficiaryService {
     private final BeneficiaryRepo beneficiaryRepo;
 
     public Beneficiary getBeneficiaryByName(String name){
-        Beneficiary beneficiary = beneficiaryRepo.getBeneficiaryByName(name);
-        if (beneficiary == null){
-            BeneficiaryNotFoundException e = new BeneficiaryNotFoundException(
-                    String.format("Beneficiary name is %s not found", name));
-            log.info(LogHelper.getLogString(this.getClass(), "Error: " + e.getMessage()));
-            throw e;
-        }
-        return beneficiary;
+        return beneficiaryRepo.getBeneficiaryByName(name);
     }
 
     public void save(Beneficiary beneficiary){
         beneficiaryRepo.save(beneficiary);
+    }
+
+    public boolean checkPincodeOnValidation(Beneficiary beneficiary, String pincode){
+        if (!beneficiary.getPinCode().equals(pincode)){
+            PincodeIsNotValidException e = new PincodeIsNotValidException("Pincode is not valid. Try again!");
+            log.info(LogHelper.getLogString(this.getClass(), "Error: " + e.getMessage()));
+            throw e;
+        }
+        return true;
     }
 }

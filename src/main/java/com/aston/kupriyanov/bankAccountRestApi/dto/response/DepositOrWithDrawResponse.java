@@ -4,20 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
 @Builder
-public class TransferResponse {
+public class DepositOrWithDrawResponse {
     @JsonProperty("id_transaction")
     private UUID idTransaction;
     @JsonProperty("operation")
     private String operation;
     @JsonProperty("source_account")
     private String sourceAccountNumber;
-    @JsonProperty("destination_account")
-    private String destinationAccountNumber;
     @JsonProperty("value")
     private long value;
 }

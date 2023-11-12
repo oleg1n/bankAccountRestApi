@@ -18,8 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class BankAccountRestApiApplication implements CommandLineRunner {
 
-	@Autowired
-	private MainFlowService mainFlowService;
 
 
 	public static void main(String[] args) {

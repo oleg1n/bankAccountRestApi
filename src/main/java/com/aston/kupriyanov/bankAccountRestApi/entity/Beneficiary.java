@@ -23,6 +23,8 @@ public class Beneficiary {
     private UUID id;
     @Column(name = "name")
     private String name;
+    @Column(name = "pin_code")
+    private String pinCode;
     @Column(name = "create_date")
     @CreatedDate
     private LocalDateTime createDate;
@@ -30,8 +32,9 @@ public class Beneficiary {
     private List<Account> accounts;
 
     public Beneficiary(){}
-    public Beneficiary(String name){
+    public Beneficiary(String name, String pinCode){
         this.name = name;
+        this.pinCode = pinCode;
     }
 
     public void addAccount(Account account){

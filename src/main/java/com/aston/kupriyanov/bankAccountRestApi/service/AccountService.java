@@ -1,6 +1,7 @@
 package com.aston.kupriyanov.bankAccountRestApi.service;
 
 import com.aston.kupriyanov.bankAccountRestApi.entity.Account;
+import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
 import com.aston.kupriyanov.bankAccountRestApi.exception.AccountNotFoundException;
 import com.aston.kupriyanov.bankAccountRestApi.exception.PincodeIsNotValidException;
 import com.aston.kupriyanov.bankAccountRestApi.repo.AccountRepo;
@@ -27,15 +28,6 @@ public class AccountService {
             throw e;
         }
         return account;
-    }
-
-    public boolean checkPincodeOnValidation(Account account, String pincode){
-        if (!account.getPincode().equals(pincode)){
-            PincodeIsNotValidException e = new PincodeIsNotValidException("Pincode is not valid. Try again!");
-            log.info(LogHelper.getLogString(this.getClass(), "Error: " + e.getMessage()));
-            throw e;
-        }
-        return true;
     }
 
     public void save(Account account){
