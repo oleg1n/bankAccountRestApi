@@ -22,7 +22,6 @@ public class Transaction {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "source_account_id")
     private Account sourceAccount;
-    //@Column(name = "destination_account_id")
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "destination_account_id")
     private Account destinationAccount;

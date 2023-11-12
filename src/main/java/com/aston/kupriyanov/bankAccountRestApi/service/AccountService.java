@@ -1,9 +1,7 @@
 package com.aston.kupriyanov.bankAccountRestApi.service;
 
 import com.aston.kupriyanov.bankAccountRestApi.entity.Account;
-import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
 import com.aston.kupriyanov.bankAccountRestApi.exception.AccountNotFoundException;
-import com.aston.kupriyanov.bankAccountRestApi.exception.PincodeIsNotValidException;
 import com.aston.kupriyanov.bankAccountRestApi.repo.AccountRepo;
 import com.aston.kupriyanov.bankAccountRestApi.util.LogHelper;
 import lombok.RequiredArgsConstructor;

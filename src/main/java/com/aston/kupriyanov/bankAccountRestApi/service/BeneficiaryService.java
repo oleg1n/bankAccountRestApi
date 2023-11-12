@@ -1,7 +1,6 @@
 package com.aston.kupriyanov.bankAccountRestApi.service;
 
 import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
-import com.aston.kupriyanov.bankAccountRestApi.exception.BeneficiaryNotFoundException;
 import com.aston.kupriyanov.bankAccountRestApi.exception.PincodeIsNotValidException;
 import com.aston.kupriyanov.bankAccountRestApi.repo.BeneficiaryRepo;
 import com.aston.kupriyanov.bankAccountRestApi.util.LogHelper;

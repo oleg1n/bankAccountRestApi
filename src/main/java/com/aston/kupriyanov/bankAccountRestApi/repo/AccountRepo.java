@@ -1,7 +1,6 @@
 package com.aston.kupriyanov.bankAccountRestApi.repo;
 
 import com.aston.kupriyanov.bankAccountRestApi.entity.Account;
-import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

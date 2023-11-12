@@ -1,16 +1,14 @@
-FROM eclipse-temurin:17-jdk-jammy as build
+FROM maven:3.8.4-openjdk-17 as build
 
-COPY . /opt
-WORKDIR /opt
+COPY . /var/docker/compose/
+WORKDIR /var/docker/compose/
 
-RUN /bin/sh mvnw clean install
+RUN mvn clean package
 
 
-FROM eclipse-temurin:17-jdk-jammy
+FROM openjdk-17
 
-RUN mkdir -p /var/files/bankAccountRestApi
-
-COPY --from=build /opt/target/*.jar /app/
+COPY --from=build /var/docker/compose/target/*.jar /app/bank-account-rest-api.jar
 
 EXPOSE 8080
 
@@ -18,8 +16,8 @@ WORKDIR /app
 ENTRYPOINT java $JAVA_OPTS                                                \
    -Dspring.profiles.active=dev                                           \
    -Dserver.port=8080                                                     \
-   -DLOGFILE=/app/log/bankAccountRestApi.log                              \
-   -Dspring.config.location=file:/app/config/smev-ervu-service.properties \
-   -Dlogging.config=/app/config/logback.xml                               \
+   -DLOGFILE=/app/log/bank-account-rest-api.log                            \
    -Dfile.encoding=UTF-8                                                  \
-   -jar /app/bankAccountRestApi.jar
+   -jar /app/bank-account-rest-api.jar
+
+
