@@ -1,10 +1,9 @@
-FROM maven:3.8.4-openjdk-17 as build
+FROM maven:3.8.5-openjdk-17 as build
 
 COPY . /var/docker/compose/
 WORKDIR /var/docker/compose/
 
 RUN mvn clean package
-
 
 FROM openjdk-17
 
