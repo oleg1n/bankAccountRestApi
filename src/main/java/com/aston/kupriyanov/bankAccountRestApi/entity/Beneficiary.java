@@ -2,6 +2,7 @@ package com.aston.kupriyanov.bankAccountRestApi.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Table(name = "beneficiary")
 @EntityListeners(AuditingEntityListener.class)
 @Data
+@NoArgsConstructor
 public class Beneficiary {
     @Id
     @Column(name = "id")
@@ -26,10 +28,9 @@ public class Beneficiary {
     @Column(name = "create_date")
     @CreatedDate
     private LocalDateTime createDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Account> accounts;
 
-    public Beneficiary(){}
     public Beneficiary(String name, String pinCode){
         this.name = name;
         this.pinCode = pinCode;
