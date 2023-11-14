@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface AccountRepo extends JpaRepository<Account, UUID> {
-    @Query(
-            value = "SELECT * FROM account a WHERE a.number = ?",
-            nativeQuery = true)
+//    @Query(
+//            value = "SELECT * FROM account a WHERE a.number = ?",
+//            nativeQuery = true)
     public Account getAccountByNumber(String number);
 }

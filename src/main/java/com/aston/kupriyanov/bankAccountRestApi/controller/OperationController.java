@@ -1,9 +1,9 @@
 package com.aston.kupriyanov.bankAccountRestApi.controller;
 
-import com.aston.kupriyanov.bankAccountRestApi.dto.request.DepositOrWithDrawRequest;
-import com.aston.kupriyanov.bankAccountRestApi.dto.request.TransferRequest;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.DepositOrWithDrawResponse;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.TransferResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.request.DepositOrWithDrawRequest;
+import com.aston.kupriyanov.bankAccountRestApi.api.request.TransferRequest;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.DepositOrWithDrawResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.TransferResponse;
 import com.aston.kupriyanov.bankAccountRestApi.service.OperationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

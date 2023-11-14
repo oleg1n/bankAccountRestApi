@@ -1,4 +1,4 @@
-package com.aston.kupriyanov.bankAccountRestApi.dto.request;
+package com.aston.kupriyanov.bankAccountRestApi.api.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.DecimalMin;

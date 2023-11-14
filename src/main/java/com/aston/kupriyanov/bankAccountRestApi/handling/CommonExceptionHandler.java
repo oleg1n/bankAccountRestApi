@@ -1,6 +1,6 @@
-package com.aston.kupriyanov.bankAccountRestApi.controller;
+package com.aston.kupriyanov.bankAccountRestApi.handling;
 
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.IncorrectDataResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.IncorrectDataResponse;
 import com.aston.kupriyanov.bankAccountRestApi.exception.CommonNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ExceptionController {
+public class CommonExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<IncorrectDataResponse> handleException(CommonNotFoundException e){

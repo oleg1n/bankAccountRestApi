@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface BeneficiaryRepo extends JpaRepository<Beneficiary, UUID> {
-    @Query(
-            value = "SELECT * FROM beneficiary b WHERE b.name = ?",
-            nativeQuery = true)
+//    @Query(
+//            value = "SELECT * FROM beneficiary b WHERE b.name = ?",
+//            nativeQuery = true)
     public Beneficiary getBeneficiaryByName(String name);
 }

@@ -1,10 +1,10 @@
 package com.aston.kupriyanov.bankAccountRestApi.service;
 
 import com.aston.kupriyanov.bankAccountRestApi.dto.TransactionDto;
-import com.aston.kupriyanov.bankAccountRestApi.dto.request.NewAccountRequest;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.AccountResponse;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.NewAccountResponse;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.TransactionResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.request.NewAccountRequest;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.AccountResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.NewAccountResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.TransactionResponse;
 import com.aston.kupriyanov.bankAccountRestApi.entity.Account;
 import com.aston.kupriyanov.bankAccountRestApi.entity.Beneficiary;
 import com.aston.kupriyanov.bankAccountRestApi.exception.BeneficiaryNotFoundException;

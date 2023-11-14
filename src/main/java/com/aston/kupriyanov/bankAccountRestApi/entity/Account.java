@@ -1,5 +1,6 @@
 package com.aston.kupriyanov.bankAccountRestApi.entity;
 
+import com.aston.kupriyanov.bankAccountRestApi.util.AccountHelper;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -34,7 +35,7 @@ public class Account {
     private List<Transaction> transactions;
 
     public Account() {
-        this.number = generateNumber();
+        this.number = AccountHelper.generateNumber();
     }
 
     public void addTransaction(Transaction transaction) {
@@ -45,21 +46,5 @@ public class Account {
         transaction.setSourceAccount(this);
     }
 
-    private String generateNumber() {
-        String number = "";
-        Random value = new Random();
 
-        int count = 0;
-        int n = 0;
-        for (int i = 0; i < 16; i++) {
-            if (count == 4) {
-                number += " ";
-                count = 0;
-            } else
-                n = value.nextInt(10);
-            number += Integer.toString(n);
-            count++;
-        }
-        return number;
-    }
 }

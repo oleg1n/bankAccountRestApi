@@ -1,9 +1,9 @@
 package com.aston.kupriyanov.bankAccountRestApi.controller;
 
-import com.aston.kupriyanov.bankAccountRestApi.dto.request.NewAccountRequest;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.AccountResponse;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.NewAccountResponse;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.TransactionResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.request.NewAccountRequest;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.AccountResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.NewAccountResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.TransactionResponse;
 import com.aston.kupriyanov.bankAccountRestApi.service.MainFlowService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

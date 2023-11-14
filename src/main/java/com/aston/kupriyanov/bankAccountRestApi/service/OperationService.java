@@ -1,10 +1,10 @@
 package com.aston.kupriyanov.bankAccountRestApi.service;
 
 import com.aston.kupriyanov.bankAccountRestApi.constant.OperationType;
-import com.aston.kupriyanov.bankAccountRestApi.dto.request.DepositOrWithDrawRequest;
-import com.aston.kupriyanov.bankAccountRestApi.dto.request.TransferRequest;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.DepositOrWithDrawResponse;
-import com.aston.kupriyanov.bankAccountRestApi.dto.response.TransferResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.request.DepositOrWithDrawRequest;
+import com.aston.kupriyanov.bankAccountRestApi.api.request.TransferRequest;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.DepositOrWithDrawResponse;
+import com.aston.kupriyanov.bankAccountRestApi.api.response.TransferResponse;
 import com.aston.kupriyanov.bankAccountRestApi.entity.Account;
 import com.aston.kupriyanov.bankAccountRestApi.entity.Transaction;
 import com.aston.kupriyanov.bankAccountRestApi.exception.InsufficientFundsException;

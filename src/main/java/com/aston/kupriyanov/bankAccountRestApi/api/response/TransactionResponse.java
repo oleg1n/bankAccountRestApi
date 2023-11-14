@@ -1,4 +1,4 @@
-package com.aston.kupriyanov.bankAccountRestApi.dto.response;
+package com.aston.kupriyanov.bankAccountRestApi.api.response;
 
 import com.aston.kupriyanov.bankAccountRestApi.dto.TransactionDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
